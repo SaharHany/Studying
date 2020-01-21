@@ -9,3 +9,16 @@ When you declare a function that takes a closure as one of its parameters,
 you can write @escaping before the parameter's type to indicate that the closure is allowed to escape.
 One way that a closure can escape is by being stored in a variable that is defined outside the function.
 -------------------------------------------------------
+To work without any storyboards : 
+1) move the main.storyboard to trash.
+2) in General -> Deployment Info -> Main Interface
+   change the value of Main Interface from Main.storyboard to Launch.storyboard.
+3) create the new main xib file you desired.
+4) add these line to didFinishLaunchingWithOptions In appDelegate : 
+    window = UIWindow(frame: UIScreen.main.bounds)
+    let mainVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+    let nav = UINavigationController(rootViewController: mainVC)
+    window?.rootViewController = nav
+    window?.makeKeyAndVisible()
+    
+--------------------------------------------------------
